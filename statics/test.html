@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no" />
+    <title>ACAD Forge API examples - IBIS Software</title>
+
+    <!-- The Viewer CSS -->
+    <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/style.min.css" type="text/css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+
+    <!-- The Viewer JS -->
+    <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/three.min.js"></script>
+    <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.min.js"></script>
+
+    <script src="viewer.js"></script>
+    <script src="app.js"></script>
+    
+
+    <script id="filelist-template" type="text/x-handlebars-template">
+        <div class="ui bulleted list">
+            {{#each files}}
+            <div class="item"><span class="clickable blue-text" datafile={{this.name}}>{{this.displayName}}</span></div>
+            {{/each}}
+        </div>
+      </script>
+
+    <style>
+        .viewerContainer {
+            width: 100%;
+            height: 400px!important;
+        }
+        .medium-icon {
+            height: 32px;
+            width: 32px;
+        }
+
+        .vertical-text {
+            -ms-transform: rotate(90deg);
+            /* IE 9 */
+            -webkit-transform: rotate(90deg);
+            /* Chrome, Safari, Opera */
+            transform: rotate(90deg);
+        }
+
+        .docker-container {
+            padding: 4px;
+            border: 2px solid #FFFFFF;
+        }
+
+        .docker-container:hover {
+            border: 2px solid #8181F7;
+        }
+
+        .hover-effect:hover {
+            background-color: #8181F7;
+        }
+
+        .work-space {
+            padding-left: 10px;
+            padding-right: 20px;
+        }
+
+        .info-panel {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .green-text {
+            color: #21610B;
+        }
+
+        .red-text {
+            color: #FF0000;
+        }
+
+        .yellow-text {
+            color: #DF3A01;
+        }
+        .blue-text {
+            color: rgb(15, 15, 151);
+        }
+
+        .green-bg {
+            background-color: #21610B;
+        }
+
+        .red-bg {
+            background-color: #FF0000;
+        }
+
+        .yellow-bg {
+            background-color: #DF3A01;
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ui segment">
+        <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i>
+            Forge API examples - IBIS Software
+        </h2>
+    </div>
+
+    <div class="ui segment">
+        <div class="ui grid">
+            <div class="six wide column">
+                <h4 class="ui header">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Example Files
+                        <div class="sub header">Example files in Azure Storage</div>
+                    </div>
+                </h4>
+                <div id="filelistdiv" class="ui raised segment">
+
+                </div>
+            </div>
+            <div class="ten wide column">
+                <h4 class="ui header">
+                    <i class="settings icon"></i>
+                    <div class="content">
+                        Viewer
+                        <div class="sub header">Please select a file to view</div>
+                    </div>
+                </h4>
+                <div id="viewerContainer" style="height:300px;" class="ui raised segment">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
